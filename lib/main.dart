@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import './screens/personalized_jobs.dart';
 import './screens/profile_page.dart';
+import './screens/job_detail.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       routes: {
         ProfilePage.routeName: (context) => ProfilePage(),
         PersonalizedJobs.routeName: (context) => PersonalizedJobs(),
+        JobDetail.routeName: (context) => JobDetail(),
       },
     );
   }
