@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './screens/main_screen.dart';
 
 import 'screens/personalized_jobs.dart';
 import 'screens/profile_page.dart';
