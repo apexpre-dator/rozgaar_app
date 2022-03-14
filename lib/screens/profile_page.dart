@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rozgaar_app/screens/account_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -37,17 +38,15 @@ class _ProfilePageState extends State<ProfilePage> {
 
   int _selectedPage = 0;
 
-  // void _selectPage(int index) {
-  //   setState(() {
-  //     _selectedPage = index;
-  //   });
-  // }
-
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
       _selectedPage = index;
     });
+  }
+
+  void myaccount(BuildContext context){
+    Navigator.of(context).pushNamed(Account.routeName,);
   }
 
   @override
@@ -68,7 +67,7 @@ class _ProfilePageState extends State<ProfilePage> {
               Profilemenu(
                 text: 'My Account',
                 myIcon: const Icon(Icons.person),
-                press: () {},
+                press: (){myaccount(context);},
               ),
               const SizedBox(
                 height: 20,
@@ -161,11 +160,6 @@ class Profilemenu extends StatelessWidget {
             onPressed: press,
             child: Row(
               children: [
-                // Icon(
-                //   Icons.person_outline,
-                //   color: Colors.orange,
-                //   size: 30,
-                // ),
                 myIcon,
                 const SizedBox(
                   width: 20,
