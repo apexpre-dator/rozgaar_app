@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ProfilePage(),
+      home: ,
       routes: {
         ProfilePage.routeName: (context) => ProfilePage(),
         PersonalizedJobs.routeName: (context) => PersonalizedJobs(),
