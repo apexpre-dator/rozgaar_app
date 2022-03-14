@@ -5,8 +5,13 @@ class PersonalizedJobs extends StatelessWidget {
   static const routeName= '/personalized-jobs';
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Rozgaar'),
+      ),
+      body: Center(
+        child: Text('Jobs'),
+      ),
     );
   }
 }

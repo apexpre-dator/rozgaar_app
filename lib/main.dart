@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import './screens/main_screen.dart';
 
-import 'screens/personalized_jobs.dart';
-import 'screens/profile_page.dart';
+import './screens/personalized_jobs.dart';
+import './screens/profile_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,10 +17,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: , 
+      home: ,
       routes: {
-        ProfilePage.routeName:(context) => ProfilePage(),
-        PersonalizedJobs.routeName:(context) => PersonalizedJobs(),
+        ProfilePage.routeName: (context) => ProfilePage(),
+        PersonalizedJobs.routeName: (context) => PersonalizedJobs(),
       },
     );
   }
