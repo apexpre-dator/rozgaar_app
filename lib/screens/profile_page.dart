@@ -1,12 +1,159 @@
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({ Key? key }) : super(key: key);
-  static const routeName= '/profile-page';
+  const ProfilePage({Key? key}) : super(key: key);
+  static const routeName = '/profile-page';
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Profile'),
+      ),
+      body: Column(
+        children: [
+          const ProfilePic(),
+          const SizedBox(
+            height: 20,
+          ),
+          Profilemenu(
+            text: 'My Account',
+            myIcon: const Icon(Icons.person),
+            press: () {},
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Profilemenu(
+            text: 'Education',
+            myIcon: const Icon(Icons.school_sharp),
+            press: () {},
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Profilemenu(
+            text: 'Interests',
+            myIcon: const Icon(Icons.note),
+            press: () {},
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Profilemenu(
+            text: 'Settings',
+            myIcon: const Icon(Icons.settings),
+            press: () {},
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Profilemenu(
+            text: 'Log Out',
+            myIcon: const Icon(Icons.logout_outlined),
+            press: () {},
+          ),          
+        ],
+      ),
+    );
+  }
+}
+
+class Profilemenu extends StatelessWidget {
+  const Profilemenu({
+    Key? key,
+    required this.text,
+    required this.myIcon,
+    required this.press,
+  }) : super(key: key);
+
+  final String text;
+  final Icon myIcon;
+  final VoidCallback press;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 50,
+      child: Padding(
+        padding: const EdgeInsets.all(2),
+        child: FlatButton(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+          color: const Color.fromARGB(255, 236, 231, 231),
+          onPressed: press,
+          child: Row(
+            children: [
+              // Icon(
+              //   Icons.person_outline,
+              //   color: Colors.orange,
+              //   size: 30,
+              // ),
+              myIcon,
+              const SizedBox(
+                width: 20,
+              ),
+              Expanded(
+                child: Text(
+                  text,
+                  style: const TextStyle(color: Colors.grey),
+                ),
+              ),
+              const Icon(
+                Icons.arrow_forward_ios,
+                color: Colors.grey,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ProfilePic extends StatelessWidget {
+  const ProfilePic({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: SizedBox(
+        height: 115,
+        width: 115,
+        child: Stack(
+          overflow: Overflow.visible,
+          fit: StackFit.expand,
+          children: [
+            const CircleAvatar(
+              backgroundImage: AssetImage('assets/images/dp.jpg'),
+            ),
+            Positioned(
+              bottom: 0,
+              right: -12,
+              child: SizedBox(
+                height: 46,
+                width: 46,
+                child: FlatButton(
+                    padding: EdgeInsets.zero,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                      side: const BorderSide(
+                          color: Color.fromARGB(115, 112, 104, 104)),
+                    ),
+                    color: Colors.white,
+                    onPressed: () {},
+                    child: const Icon(
+                      Icons.camera_alt,
+                      color: Colors.grey,
+                    )),
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
