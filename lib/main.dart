@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rozgaar_app/screens/account_page.dart';
 
+import './screens/account_page.dart';
 import './screens/personalized_jobs.dart';
 import './screens/profile_page.dart';
 import './screens/job_detail.dart';
@@ -22,10 +22,9 @@ class MyApp extends StatelessWidget {
       home: ,
       routes: {
         ProfilePage.routeName: (context) => ProfilePage(),
-        Account.routeName:(context) => Account(),
+        Account.routeName: (context) => Account(),
         PersonalizedJobs.routeName: (context) => PersonalizedJobs(),
         JobDetail.routeName: (context) => JobDetail(),
-
       },
     );
   }
