@@ -1,58 +1,132 @@
 import 'package:flutter/material.dart';
+import 'package:rozgaar_app/screens/account_page.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
   static const routeName = '/profile-page';
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.grey);
+  var options;
+
+  @override
+  void initState() {
+    options = [
+      ProfilePage(),
+      Text('hello'),
+      const Center(
+        child: Text(
+          'Coming Soon',
+          style: optionStyle,
+        ),
+      ),
+      const Center(
+        child: Text(
+          'Coming Soon',
+          style: optionStyle,
+        ),
+      ),
+    ];
+    super.initState();
+  }
+
+  int _selectedPage = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+      _selectedPage = index;
+    });
+  }
+
+  void myaccount(BuildContext context){
+    Navigator.of(context).pushNamed(Account.routeName,);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile'),
       ),
-      body: Column(
-        children: [
-          const ProfilePic(),
-          const SizedBox(
-            height: 20,
+      body: SingleChildScrollView(
+        child: Container(
+          height: 640,
+          child: Column(
+            children: [
+              const ProfilePic(),
+              const SizedBox(
+                height: 20,
+              ),
+              Profilemenu(
+                text: 'My Account',
+                myIcon: const Icon(Icons.person),
+                press: (){myaccount(context);},
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Profilemenu(
+                text: 'Education',
+                myIcon: const Icon(Icons.school_sharp),
+                press: () {},
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Profilemenu(
+                text: 'Interests',
+                myIcon: const Icon(Icons.note),
+                press: () {},
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Profilemenu(
+                text: 'Settings',
+                myIcon: const Icon(Icons.settings),
+                press: () {},
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Profilemenu(
+                text: 'Log Out',
+                myIcon: const Icon(Icons.logout_outlined),
+                press: () {},
+              ),
+            ],
           ),
-          Profilemenu(
-            text: 'My Account',
-            myIcon: const Icon(Icons.person),
-            press: () {},
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+            // backgroundColor: Colors.indigo,
           ),
-          const SizedBox(
-            height: 20,
+          BottomNavigationBarItem(
+            icon: Icon(Icons.work_rounded),
+            label: 'Jobs',
+            // backgroundColor: Colors.indigo,
           ),
-          Profilemenu(
-            text: 'Education',
-            myIcon: const Icon(Icons.school_sharp),
-            press: () {},
+          BottomNavigationBarItem(
+            icon: Icon(Icons.workspaces),
+            label: 'Collection',
+            // backgroundColor: Colors.indigo,
           ),
-          const SizedBox(
-            height: 20,
-          ),
-          Profilemenu(
-            text: 'Interests',
-            myIcon: const Icon(Icons.note),
-            press: () {},
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Profilemenu(
-            text: 'Settings',
-            myIcon: const Icon(Icons.settings),
-            press: () {},
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Profilemenu(
-            text: 'Log Out',
-            myIcon: const Icon(Icons.logout_outlined),
-            press: () {},
-          ),          
         ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.black,
+        onTap: _onItemTapped,
+        backgroundColor: Colors.blue,
       ),
     );
   }
@@ -72,38 +146,36 @@ class Profilemenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 50,
-      child: Padding(
-        padding: const EdgeInsets.all(2),
-        child: FlatButton(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
-          ),
-          color: const Color.fromARGB(255, 236, 231, 231),
-          onPressed: press,
-          child: Row(
-            children: [
-              // Icon(
-              //   Icons.person_outline,
-              //   color: Colors.orange,
-              //   size: 30,
-              // ),
-              myIcon,
-              const SizedBox(
-                width: 20,
-              ),
-              Expanded(
-                child: Text(
-                  text,
-                  style: const TextStyle(color: Colors.grey),
+    return Padding(
+      padding: const EdgeInsets.all(5),
+      child: SizedBox(
+        height: 70,
+        child: Padding(
+          padding: const EdgeInsets.all(2),
+          child: FlatButton(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            color: const Color.fromARGB(255, 236, 231, 231),
+            onPressed: press,
+            child: Row(
+              children: [
+                myIcon,
+                const SizedBox(
+                  width: 20,
                 ),
-              ),
-              const Icon(
-                Icons.arrow_forward_ios,
-                color: Colors.grey,
-              ),
-            ],
+                Expanded(
+                  child: Text(
+                    text,
+                    style: const TextStyle(color: Colors.grey),
+                  ),
+                ),
+                const Icon(
+                  Icons.arrow_forward_ios,
+                  color: Colors.black54,
+                ),
+              ],
+            ),
           ),
         ),
       ),
