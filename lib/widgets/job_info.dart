@@ -13,26 +13,33 @@ class JobInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        Navigator.of(context).pushNamed('/job-detail');
+        Navigator.of(context).pushNamed(
+          '/job-detail',
+          arguments: {
+            'id': jobInfo.id,
+          },
+        );
       },
       style: ElevatedButton.styleFrom(
+        elevation: 5,
         shape: new RoundedRectangleBorder(
           borderRadius: new BorderRadius.circular(30.0),
         ),
       ),
       child: Container(
         width: MediaQuery.of(context).size.width,
-        padding: const EdgeInsets.all(10),
+        padding: EdgeInsets.symmetric(
+          vertical: 20,
+          horizontal: 5,
+        ),
         child: Row(
           children: [
-            Image.asset(
-              'assets/images/dp.jpg',
-              height: 80,
-              width: 80,
-              fit: BoxFit.fill,
+            CircleAvatar(
+              backgroundImage: AssetImage('assets/images/dp.jpg'),
+              radius: 45,
             ),
-            SizedBox(
-              width: 10,
+            const SizedBox(
+              width: 7,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,7 +52,7 @@ class JobInfo extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
@@ -69,7 +76,7 @@ class JobInfo extends StatelessWidget {
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 16,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ],
